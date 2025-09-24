@@ -1,5 +1,5 @@
-import React from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from './ui/dialog';
+import * as React from 'react';
+import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle} from './ui/dialog';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
 interface League {
@@ -25,9 +25,10 @@ export function SeasonBadgeDialog({ league, seasonBadge, loading, onClose }: Sea
   return (
     <Dialog open={!!league} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle>{league?.strLeague} Season Badge</DialogTitle>
-        </DialogHeader>
+        <DialogTitle>{league?.strLeague} Season</DialogTitle>
+        <DialogDescription>
+            {league?.strSport}
+        </DialogDescription>
         
         <div className="flex flex-col items-center space-y-4 py-4">
           {loading ? (
@@ -54,12 +55,6 @@ export function SeasonBadgeDialog({ league, seasonBadge, loading, onClose }: Sea
               <div className="text-center">
                 <p className="text-sm text-muted-foreground">Season:</p>
                 <p>{seasonBadge.strSeason || 'Unknown'}</p>
-              </div>
-              
-              <div className="text-center">
-                <p className="text-sm text-muted-foreground">League:</p>
-                <p>{league?.strLeague}</p>
-                <p className="text-sm text-muted-foreground">{league?.strSport}</p>
               </div>
             </div>
           ) : null}

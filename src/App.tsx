@@ -1,3 +1,4 @@
+// @ts-ignore
 import React, { useState, useEffect } from 'react';
 import { SearchBar } from './components/SearchBar';
 import { SportFilter } from './components/SportFilter';
@@ -34,7 +35,7 @@ export default function App() {
         setLoading(true);
         const response = await fetch('https://www.thesportsdb.com/api/v1/json/3/all_leagues.php');
         if (!response.ok) {
-          throw new Error('Failed to fetch leagues');
+          setError('Failed to fetch leagues');
         }
         const data = await response.json();
         setLeagues(data.leagues || []);
@@ -82,21 +83,34 @@ export default function App() {
       // Fetch seasons for the league
       const seasonsResponse = await fetch(`https://www.thesportsdb.com/api/v1/json/3/search_all_seasons.php?id=${league.idLeague}`);
       if (!seasonsResponse.ok) {
-        throw new Error('Failed to fetch seasons');
+        setError('Failed to fetch seasons');
       }
       const seasonsData = await seasonsResponse.json();
-      
+      let seasonName = 'No season available';
       if (seasonsData.seasons && seasonsData.seasons.length > 0) {
-        // Get the first season's badge
-        const firstSeason = seasonsData.seasons[0];
-        setSeasonBadge({
-          strBadge: firstSeason.strBadge,
-          strSeason: firstSeason.strSeason
-        });
+        seasonName = seasonsData.seasons[0].strSeason;
       }
+
+      // Fetch badge data for the league
+      const badgeResponse = await fetch(`https://www.thesportsdb.com/api/v1/json/3/search_all_seasons.php?badge=1&id=${league.idLeague}`);
+      let badgeUrl = '';
+      if (badgeResponse.ok) {
+        const badgeData = await badgeResponse.json();
+        if (badgeData.seasons && badgeData.seasons.length > 0) {
+          // Find the first season with a badge
+          const seasonWithBadge = badgeData.seasons.find((season: any) => season.strBadge);
+          if (seasonWithBadge) {
+            badgeUrl = seasonWithBadge.strBadge;
+          }
+        }
+      }
+
+      setSeasonBadge({
+        strBadge: badgeUrl,
+        strSeason: seasonName
+      });
     } catch (err) {
-      console.error('Error fetching season badge:', err);
-      // Set a placeholder if no badge is found
+      console.error('Error fetching season or badge:', err);
       setSeasonBadge({
         strBadge: '',
         strSeason: 'No badge available'
