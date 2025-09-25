@@ -1,11 +1,6 @@
 import * as React from 'react';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-
-interface SportFilterProps {
-  selectedSport: string;
-  onSportChange: (sport: string) => void;
-  sports: string[];
-}
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui';
+import {SportFilterProps} from "./models";
 
 export function SportFilter({ selectedSport, onSportChange, sports }: SportFilterProps) {
   return (
