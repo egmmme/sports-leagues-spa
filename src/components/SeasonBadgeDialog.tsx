@@ -1,25 +1,6 @@
 import * as React from 'react';
-import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogClose} from './ui/dialog';
-import {Image} from './ui/image';
-
-interface League {
-    idLeague: string;
-    strLeague: string;
-    strSport: string;
-    strLeagueAlternate: string;
-}
-
-interface SeasonBadge {
-    strBadge: string;
-    strSeason: string;
-}
-
-interface SeasonBadgeDialogProps {
-    league: League | null;
-    seasonBadge: SeasonBadge | null;
-    loading: boolean;
-    onClose: () => void;
-}
+import {Dialog, DialogContent, DialogDescription, DialogTitle, DialogClose, Image} from './ui';
+import {SeasonBadgeDialogProps} from "./models";
 
 export function SeasonBadgeDialog({league, seasonBadge, loading, onClose}: SeasonBadgeDialogProps) {
     return (
@@ -29,10 +10,13 @@ export function SeasonBadgeDialog({league, seasonBadge, loading, onClose}: Seaso
                 <DialogDescription>
                     {league?.strSport}
                 </DialogDescription>
-                {/* Add close button */}
-                <DialogClose className="absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none">
+                <DialogClose
+                    className="absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none">
                     <span className="sr-only">Close</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="size-4" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
                 </DialogClose>
                 <div className="flex flex-col items-center space-y-4 py-4">
                     {loading ? (

@@ -1,12 +1,7 @@
-import React from 'react';
-import { Input } from './ui/input';
+import * as React from 'react';
 import { Search } from 'lucide-react';
-
-interface SearchBarProps {
-  searchTerm: string;
-  onSearchChange: (term: string) => void;
-}
-
+import { Input } from './ui';
+import { SearchBarProps } from './models';
 export function SearchBar({ searchTerm, onSearchChange }: SearchBarProps) {
   return (
     <div className="relative">
