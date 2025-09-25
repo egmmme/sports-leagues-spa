@@ -1,0 +1,13 @@
+﻿export const ALL_LEAGUES_URL = 'https://www.thesportsdb.com/api/v1/json/3/all_leagues.php';
+export const SEASONS_URL = (idLeague: string) => `https://www.thesportsdb.com/api/v1/json/3/search_all_seasons.php?id=${idLeague}`;
+export const BADGE_URL = (idLeague: string) => `https://www.thesportsdb.com/api/v1/json/3/search_all_seasons.php?badge=1&id=${idLeague}`;
+export const DEFAULT_SPORT = 'all';
+export const LOADING_LEAGUES_TEXT = 'Loading leagues...';
+export const ERROR_PREFIX = 'Error: ';
+export const NO_SEASON_AVAILABLE = 'No season available';
+export const NO_BADGE_AVAILABLE = 'No badge available';
+export const SPORTS_LEAGUES_DIRECTORY = 'Sports Leagues Directory';
+export const SHOWING_LEAGUES_TEXT = (filtered: number, total: number) => `Showing ${filtered} of ${total} leagues`;
+export const ALTERNATE_NAME_LABEL = 'Alternate Name:';
+export const SEASON_LABEL = 'Season:';
+export const NO_BADGE_TEXT = 'No badge available';
