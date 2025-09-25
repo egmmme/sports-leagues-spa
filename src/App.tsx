@@ -5,18 +5,7 @@ import { SportFilter } from './components/SportFilter';
 import { LeagueList } from './components/LeagueList';
 import { SeasonBadgeDialog } from './components/SeasonBadgeDialog';
 import { useFetch } from "./hooks/useFetch";
-
-interface League {
-  idLeague: string;
-  strLeague: string;
-  strSport: string;
-  strLeagueAlternate: string;
-}
-
-interface SeasonBadge {
-  strBadge: string;
-  strSeason: string;
-}
+import {League, SeasonBadge} from "./types";
 
 export default function App() {
   const [leagues, setLeagues] = useState<League[]>([]);

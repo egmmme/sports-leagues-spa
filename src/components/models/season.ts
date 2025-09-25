@@ -1,9 +1,4 @@
-﻿import {League} from "./league";
-
-export interface SeasonBadge {
-    strBadge: string;
-    strSeason: string;
-}
+﻿import {League, SeasonBadge} from "../../types";
 
 export interface SeasonBadgeDialogProps {
     league: League | null;

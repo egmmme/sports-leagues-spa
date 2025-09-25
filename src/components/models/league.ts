@@ -1,10 +1,4 @@
-﻿// League model and props
-export interface League {
-    idLeague: string;
-    strLeague: string;
-    strSport: string;
-    strLeagueAlternate: string;
-}
+﻿import {League} from "../../types";
 
 export interface LeagueCardProps {
     league: League;
