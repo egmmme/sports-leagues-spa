@@ -11,3 +11,4 @@ export const SHOWING_LEAGUES_TEXT = (filtered: number, total: number) => `Showin
 export const ALTERNATE_NAME_LABEL = 'Alternate Name:';
 export const SEASON_LABEL = 'Season:';
 export const NO_BADGE_TEXT = 'No badge available';
+export const SPORTS_PLACEHOLDER = 'Filter by sport';

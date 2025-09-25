@@ -23,7 +23,7 @@ export default function App() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [searchTerm, setSearchTerm] = useState('');
-    const [selectedSport, setSelectedSport] = useState('all');
+    const [selectedSport, setSelectedSport] = useState(DEFAULT_SPORT);
     const [selectedLeague, setSelectedLeague] = useState<League | null>(null);
     const [seasonBadge, setSeasonBadge] = useState<SeasonBadge | null>(null);
     const [badgeLoading, setBadgeLoading] = useState(false);
