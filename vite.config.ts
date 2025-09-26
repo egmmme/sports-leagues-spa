@@ -1,9 +1,15 @@
-import {defineConfig} from 'vite';
+import {defineConfig, UserConfig} from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import * as path from 'path';
 
 export default defineConfig({
     plugins: [react()],
+    test: {
+        environment: 'jsdom',
+        global: true,
+        setupFiles: './setupTests.js',
+        css: true,
+    },
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
         alias: {
@@ -22,4 +28,4 @@ export default defineConfig({
         port: 3000,
         open: true,
     },
-});
+} as UserConfig);
