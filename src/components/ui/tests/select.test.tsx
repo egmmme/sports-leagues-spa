@@ -1,26 +1,26 @@
-import '@testing-library/jest-dom';
-import {render, screen, fireEvent} from '@testing-library/react';
-import {expect, test} from 'vitest';
+import {render, screen, fireEvent, act, waitFor} from '@testing-library/react';
+import {expect, describe, it} from 'vitest';
 import {Select, SelectTrigger, SelectContent, SelectItem} from '../select';
 
-test('renders SelectTrigger and opens SelectContent on click', () => {
-    render(
-        <Select>
-            <SelectTrigger>Choose option</SelectTrigger>
-            <SelectContent>
-                <SelectItem value="one">Option One</SelectItem>
-                <SelectItem value="two">Option Two</SelectItem>
-            </SelectContent>
-        </Select>
-    );
+describe("select ui component", () => {
+    it('renders SelectTrigger and opens SelectContent on click', async () => {
+        render(
+            <Select>
+                <SelectTrigger>Choose option</SelectTrigger>
+                <SelectContent>
+                    <SelectItem value="one">Option One</SelectItem>
+                    <SelectItem value="two">Option Two</SelectItem>
+                </SelectContent>
+            </Select>
+        );
 
-    // Trigger is rendered
-    expect(screen.getByText('Choose option')).toBeInTheDocument();
+        act(() => {
+            fireEvent.click(screen.getByText('Choose option')); 
+        });
 
-    // Open the select
-    fireEvent.mouseDown(screen.getByText('Choose option'));
-
-    // Content appears
-    expect(screen.getByText('Option One')).toBeInTheDocument();
-    expect(screen.getByText('Option Two')).toBeInTheDocument();
+        waitFor(async () => {
+            expect(await screen.findByText('Option One')).toBeInTheDocument();
+            expect(await screen.findByText('Option Two')).toBeInTheDocument();
+        });
+    });
 });

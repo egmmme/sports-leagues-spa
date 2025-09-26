@@ -1,13 +1,12 @@
 import {defineConfig, UserConfig} from 'vite';
 import react from '@vitejs/plugin-react-swc';
-import * as path from 'path';
 
 export default defineConfig({
     plugins: [react()],
     test: {
         environment: 'jsdom',
         global: true,
-        setupFiles: './setupTests.js',
+        setupFiles: './src/components/ui/tests/setupTests.ts',
         css: true,
     },
     resolve: {
@@ -17,7 +16,6 @@ export default defineConfig({
             'class-variance-authority@0.7.1': 'class-variance-authority',
             '@radix-ui/react-dialog@1.1.6': '@radix-ui/react-dialog',
             '@radix-ui/react-select@2.1.6': '@radix-ui/react-select',
-            '@': path.resolve(__dirname, './src'),
         },
     },
     build: {
