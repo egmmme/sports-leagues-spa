@@ -8,6 +8,10 @@ Run `npm i` to install the dependencies.
 
 Run `npm run dev` to start the development server.
 
+Run `npm run build` to create a production build and `npm run preview` to check it out.
+
+Run `npm test` to run the tests.
+
 ## Overview
 The application includes a responsive grid layout of league cards, search functionality, sport filtering, and clickable
 league cards that display season badges in a modal dialog.
