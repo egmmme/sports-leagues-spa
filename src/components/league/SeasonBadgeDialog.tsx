@@ -1,8 +1,16 @@
 import * as React from 'react';
-import {Dialog, DialogContent, DialogDescription, DialogTitle, DialogClose, Image} from './ui';
-import {SeasonBadgeDialogProps} from "./models";
+import {Dialog, DialogContent, DialogDescription, DialogTitle, DialogClose, Image} from '../../ui';
+import {League, Season} from "../../types";
 
-export function SeasonBadgeDialog({league, seasonBadge, loading, onClose}: SeasonBadgeDialogProps) {
+
+export interface SeasonBadgeDialogProps {
+    league: League | null;
+    seasonBadge: Season | null;
+    loading: boolean;
+    onClose: () => void;
+}
+
+export default function SeasonBadgeDialog({league, seasonBadge, loading, onClose}: SeasonBadgeDialogProps) {
     return (
         <Dialog open={!!league} onOpenChange={onClose}>
             <DialogContent className="sm:max-w-md">
