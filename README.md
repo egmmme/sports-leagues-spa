@@ -43,18 +43,17 @@ Tailwind CSS (for styling)
 Radix UI (for accessible UI components)
  - ShadCN UI (for pre-built React components)
 vite (build tool)
+vitejs/plugin-react-swc (for Fast Refresh)
 ```
 ## Tools:
 ```
 Rider IDE
 GiHub for source control
-ESLint (for code linting)
 Prettier (for code formatting)
 ```
-
 ## AI tools:
 ```
 GitHub Copilot (for code suggestions and problem solving)
-Figma Make (for generating React components from designs)
 GitHub commit messages (for clear and concise commit history)
+Figma Make (for generating React components from designs)
 ```

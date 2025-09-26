@@ -1,11 +1,8 @@
 // @ts-ignore
 import React, {useState, useEffect} from 'react';
-import {SearchBar} from './components/SearchBar';
-import {SportFilter} from './components/SportFilter';
-import {LeagueList} from './components/LeagueList';
-import {SeasonBadgeDialog} from './components/SeasonBadgeDialog';
-import {useFetch} from "./hooks/useFetch";
-import {League, SeasonBadge} from "./types";
+import {SearchBar, SportFilter, LeagueList, SeasonBadge} from '../components';
+import {useFetch} from "../hooks/useFetch";
+import {League, Season} from "../types";
 import {
     ALL_LEAGUES_URL,
     BADGE_URL,
@@ -14,8 +11,8 @@ import {
     LOADING_LEAGUES_TEXT,
     ERROR_PREFIX,
     SPORTS_LEAGUES_DIRECTORY,
-    SHOWING_LEAGUES_TEXT, NO_SEASON_AVAILABLE, NO_BADGE_AVAILABLE
-} from "./app.constants";
+    SHOWING_LEAGUES_TEXT, NO_SEASON_AVAILABLE, NO_BADGE_AVAILABLE, SEARCH_LEAGUES_PLACEHOLDER
+} from "./constants";
 
 export default function App() {
     const [leagues, setLeagues] = useState<League[]>([]);
@@ -25,7 +22,7 @@ export default function App() {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedSport, setSelectedSport] = useState(DEFAULT_SPORT);
     const [selectedLeague, setSelectedLeague] = useState<League | null>(null);
-    const [seasonBadge, setSeasonBadge] = useState<SeasonBadge | null>(null);
+    const [seasonBadge, setSeasonBadge] = useState<Season | null>(null);
     const [badgeLoading, setBadgeLoading] = useState(false);
 
     // Fetch all leagues on component mount
@@ -150,6 +147,7 @@ export default function App() {
                         <SearchBar
                             searchTerm={searchTerm}
                             onSearchChange={setSearchTerm}
+                            placeholder={SEARCH_LEAGUES_PLACEHOLDER}
                         />
                     </div>
                     <div className="sm:w-64">
@@ -172,7 +170,7 @@ export default function App() {
                     onLeagueClick={handleLeagueClick}
                 />
 
-                <SeasonBadgeDialog
+                <SeasonBadge
                     league={selectedLeague}
                     seasonBadge={seasonBadge}
                     loading={badgeLoading}
