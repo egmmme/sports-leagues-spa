@@ -8,7 +8,6 @@ export const NO_SEASON_AVAILABLE = 'No season available';
 export const NO_BADGE_AVAILABLE = 'No badge available';
 export const SPORTS_LEAGUES_DIRECTORY = 'Sports Leagues Directory';
 export const SHOWING_LEAGUES_TEXT = (filtered: number, total: number) => `Showing ${filtered} of ${total} leagues`;
-export const ALTERNATE_NAME_LABEL = 'Alternate Name:';
+export const SEARCH_LEAGUES_PLACEHOLDER = 'Search leagues by name...';
 export const SEASON_LABEL = 'Season:';
 export const NO_BADGE_TEXT = 'No badge available';
-export const SPORTS_PLACEHOLDER = 'Filter by sport';

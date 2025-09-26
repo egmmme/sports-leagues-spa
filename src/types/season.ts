@@ -1,4 +1,4 @@
-﻿export interface SeasonBadge {
+﻿export interface Season {
     strBadge: string;
     strSeason: string;
 }

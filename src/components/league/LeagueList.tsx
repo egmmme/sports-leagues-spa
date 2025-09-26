@@ -1,8 +1,13 @@
 import * as React from 'react';
-import {LeagueCard} from './LeagueCard';
-import {LeagueListProps} from './models';
+import LeagueCard from './LeagueCard';
+import {League} from "../../types";
 
-export function LeagueList({leagues, onLeagueClick}: LeagueListProps) {
+export interface LeagueListProps {
+    leagues: League[];
+    onLeagueClick: (league: League) => void;
+}
+
+export default function LeagueList({leagues, onLeagueClick}: LeagueListProps) {
     if (leagues.length === 0) {
         return (
             <div className="text-center py-12">
